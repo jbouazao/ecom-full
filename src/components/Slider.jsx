@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { IoIosArrowBack } from 'react-icons/io'
 import { IoIosArrowForward } from 'react-icons/io'
@@ -8,7 +8,7 @@ import cover3 from '../assets/cover3.jpeg'
 
 const Container = styled.div`
 	width: 100%;
-	height: 100vh;
+	height: 90vh;
 	display: flex;
 	background-color: #FAFAFA;
 	position: relative;
@@ -36,14 +36,15 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
 	height: 100%;
 	display: flex;
-	transform: translateX(0vw);
+	transform: translateX(${props => props.slideIndex * -100}vw);
+	transition: all 0.4s ease-out;
 `
 
 const Slide = styled.div`
 	display: flex;
 	align-items: center;
 	width: 100vw;
-	height: 100vh;
+	height: 100%;
 `
 const ImgContainer = styled.div`
 	flex: 1;
@@ -78,9 +79,15 @@ const Button = styled.button`
 `
 
 const Slider = () => {
+	const [slideIndex, setSlideIndex] = useState(0)
 
 	const SlideHandler = (direction) => {
-
+		if (direction === 'left') {
+			setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
+		}
+		else {
+			setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
+		}
 	}
 	
 	return (
@@ -88,7 +95,7 @@ const Slider = () => {
 			<Arrow direction = "left" onClick = {() => SlideHandler('left')}>
 				<IoIosArrowBack />
 			</Arrow>
-			<Wrapper>
+			<Wrapper slideIndex = {slideIndex}>
 				<Slide>
 					<ImgContainer>
 						<Image src = {cover1} alt = ''/>
