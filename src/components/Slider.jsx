@@ -5,6 +5,7 @@ import { IoIosArrowForward } from 'react-icons/io'
 import cover1 from '../assets/cover1.jpeg'
 import cover2 from '../assets/cover2.jpeg'
 import cover3 from '../assets/cover3.jpeg'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
 	width: 100%;
@@ -13,6 +14,7 @@ const Container = styled.div`
 	background-color: #FAFAFA;
 	position: relative;
 	overflow: hidden;
+	${mobile({display: 'none'})}
 `
 
 const Arrow = styled.div`

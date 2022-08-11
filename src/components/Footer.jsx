@@ -3,9 +3,11 @@ import {AiFillFacebook, AiFillInstagram} from 'react-icons/ai'
 import {BsPinterest, BsTelephoneFill} from 'react-icons/bs'
 import {FaMapMarker} from 'react-icons/fa'
 import {GrMail} from 'react-icons/gr'
+import { mobile } from '../responsive'
 
 const Container = styled.div`
 	display: flex;
+	${mobile({flexDirection: 'column'})}
 `
 const Left = styled.div`
 	flex: 1;
@@ -38,6 +40,7 @@ const SocialIcon = styled.div`
 const Center = styled.div`
 	flex: 1;
 	padding: 20px;
+	${mobile({display: 'none'})}
 `
 const Title = styled.h3`
 	margin-bottom: 20px;
